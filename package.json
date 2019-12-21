@@ -1,0 +1,24 @@
+{
+  "name": "ski-day-counter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node ./src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dmitry-White/redux-playground.git"
+  },
+  "author": "Dmitry White",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dmitry-White/redux-playground/issues"
+  },
+  "homepage": "https://github.com/Dmitry-White/redux-playground#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
