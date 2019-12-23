@@ -1,14 +1,11 @@
 const consoleMessages = (store) => (next) => (action) => {
-  // eslint-disable-next-line
   console.groupCollapsed(`Dispaching action: ${action.type}`);
 
-  // eslint-disable-next-line
   console.log(`ski days: ${store.getState().allSkiDays.length}`);
 
   const result = next(action);
   const { allSkiDays, goal, resortNames } = store.getState();
 
-  // eslint-disable-next-line
   console.log(`
     State
     =============
@@ -19,7 +16,6 @@ const consoleMessages = (store) => (next) => (action) => {
     suggestions: ${JSON.stringify(resortNames.suggestions)}
   `);
 
-  // eslint-disable-next-line
   console.groupEnd();
 
   return result;

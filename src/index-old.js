@@ -98,7 +98,6 @@ const changedSuggestionsState = {
   suggestions: suggestions(emptySuggestionsState, changedSuggestionsAction),
 };
 
-// eslint-disable-next-line
 console.log(`
   set goal action: ${JSON.stringify(setGoalAction)}
   ski day action: ${JSON.stringify(skiDayAction)}

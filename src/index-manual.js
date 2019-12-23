@@ -4,7 +4,6 @@ import initialState from './initialState.json';
 
 let state = initialState;
 
-// eslint-disable-next-line
 console.log(`
 
   Initial State
@@ -36,7 +35,6 @@ state = rootReducer(state, {
   payload: ['Mt Tallac', 'Mt Hood', 'Mt Shasta'],
 });
 
-// eslint-disable-next-line
 console.log(`
 
   Next State
