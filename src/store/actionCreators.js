@@ -25,4 +25,25 @@ const changeSuggestions = (suggestions = []) => ({
   payload: suggestions,
 });
 
-export { setGoal, addDay, changeSuggestions };
+const clearSuggestions = () => ({
+  type: ACTIONS.CLEAR_SUGGESTIONS,
+});
+
+const addError = (error) => ({
+  type: ACTIONS.ADD_ERROR,
+  payload: error,
+});
+
+const clearError = () => ({
+  type: ACTIONS.CLEAR_ERROR,
+  payload: 0,
+});
+
+export {
+  setGoal,
+  addDay,
+  changeSuggestions,
+  clearSuggestions,
+  addError,
+  clearError,
+};

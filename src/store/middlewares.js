@@ -4,7 +4,7 @@ const consoleMessages = (store) => (next) => (action) => {
   console.log(`ski days: ${store.getState().allSkiDays.length}`);
 
   const result = next(action);
-  const { allSkiDays, goal, resortNames } = store.getState();
+  const { allSkiDays, goal, resortNames, errors } = store.getState();
 
   console.log(`
     State
@@ -14,6 +14,7 @@ const consoleMessages = (store) => (next) => (action) => {
     resorts: ${JSON.stringify(allSkiDays)}
     fetching: ${JSON.stringify(resortNames.fetching)}
     suggestions: ${JSON.stringify(resortNames.suggestions)}
+    errors: ${JSON.stringify(errors)}
   `);
 
   console.groupEnd();
