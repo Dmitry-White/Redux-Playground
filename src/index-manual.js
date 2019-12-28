@@ -1,4 +1,4 @@
-import ACTIONS from './constants';
+import ACTIONS from './store/actionTypes';
 import rootReducer from './store/reducers';
 import initialState from './initialState.json';
 

@@ -1,4 +1,4 @@
-import ACTIONS from './constants';
+import ACTIONS from './store/actionTypes';
 import {
   goal,
   skiDay,

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import ACTIONS from '../constants';
+import ACTIONS from './actionTypes';
 
 const goal = (state = 10, { type, payload }) =>
   type === ACTIONS.SET_GOAL ? parseInt(payload) : state;

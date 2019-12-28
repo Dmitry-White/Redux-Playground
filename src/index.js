@@ -1,24 +1,10 @@
 import storeFactory from './store';
-import ACTIONS from './constants';
+import { setGoal, addDay, changeSuggestions } from './store/actionCreators';
 
 const store = storeFactory();
 
-store.dispatch({
-  type: ACTIONS.SET_GOAL,
-  payload: 2,
-});
+store.dispatch(setGoal(2));
 
-store.dispatch({
-  type: ACTIONS.ADD_DAY,
-  payload: {
-    resort: 'Heavenly',
-    date: '2016-12-10',
-    powder: true,
-    backcountry: false,
-  },
-});
+store.dispatch(addDay('Heavenly', '2016-12-10', true));
 
-store.dispatch({
-  type: ACTIONS.CHANGE_SUGGESTIONS,
-  payload: ['Mt Tallac', 'Mt Hood', 'Mt Shasta'],
-});
+store.dispatch(changeSuggestions(['Mt Tallac', 'Mt Hood', 'Mt Shasta']));
