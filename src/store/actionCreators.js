@@ -20,6 +20,11 @@ const addDay = (
   },
 });
 
+const removeDay = (date) => ({
+  type: ACTIONS.REMOVE_DAY,
+  payload: date,
+});
+
 const changeSuggestions = (suggestions = []) => ({
   type: ACTIONS.CHANGE_SUGGESTIONS,
   payload: suggestions,
@@ -34,14 +39,15 @@ const addError = (error) => ({
   payload: error,
 });
 
-const clearError = () => ({
+const clearError = (index) => ({
   type: ACTIONS.CLEAR_ERROR,
-  payload: 0,
+  payload: index,
 });
 
 export {
   setGoal,
   addDay,
+  removeDay,
   changeSuggestions,
   clearSuggestions,
   addError,

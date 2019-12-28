@@ -22,6 +22,6 @@ store.dispatch(changeSuggestions(['Heavenly Ski Resort', 'Heavens Sonohara']));
 
 store.dispatch(addError("Can't connect to server"));
 
-store.dispatch(clearError());
+store.dispatch(clearError(0));
 
 store.dispatch(addError("Can't connect to server again"));
