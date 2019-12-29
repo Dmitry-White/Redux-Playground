@@ -44,6 +44,22 @@ const clearError = (index) => ({
   payload: index,
 });
 
+const randomGoal = () => (dispatch, getState) => {
+  if (!getState().resortNames.fetching) {
+    dispatch({
+      type: ACTIONS.FETCH_RESORT_NAMES,
+    });
+
+    setTimeout(
+      () =>
+        dispatch({
+          type: ACTIONS.CANCEL_FETCHING,
+        }),
+      2000,
+    );
+  }
+};
+
 export {
   setGoal,
   addDay,
@@ -52,4 +68,5 @@ export {
   clearSuggestions,
   addError,
   clearError,
+  randomGoal,
 };
