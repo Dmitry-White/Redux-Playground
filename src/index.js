@@ -7,6 +7,7 @@ import {
   addError,
   clearError,
   randomGoal,
+  suggestResortNames,
 } from './store/actionCreators';
 
 const store = storeFactory();
@@ -28,3 +29,5 @@ store.dispatch(clearError(0));
 store.dispatch(addError("Can't connect to server again"));
 
 store.dispatch(randomGoal());
+
+store.dispatch(suggestResortNames('hea'));

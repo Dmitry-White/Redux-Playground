@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 import ACTIONS from './actionTypes';
 
 const setGoal = (goal) => ({
@@ -44,20 +46,30 @@ const clearError = (index) => ({
   payload: index,
 });
 
+const startFetch = () => ({
+  type: ACTIONS.FETCH_RESORT_NAMES,
+});
+
+const cancelFetch = () => ({
+  type: ACTIONS.CANCEL_FETCHING,
+});
+
 const randomGoal = () => (dispatch, getState) => {
   if (!getState().resortNames.fetching) {
-    dispatch({
-      type: ACTIONS.FETCH_RESORT_NAMES,
-    });
+    dispatch(startFetch());
 
-    setTimeout(
-      () =>
-        dispatch({
-          type: ACTIONS.CANCEL_FETCHING,
-        }),
-      2000,
-    );
+    setTimeout(() => dispatch(cancelFetch()), 2000);
   }
+};
+
+const suggestResortNames = (value) => (dispatch) => {
+  dispatch(startFetch());
+
+  fetch(`http://localhost:3333/resorts/${value}`)
+    .then((res) => res.json())
+    .then((suggestions) => dispatch(changeSuggestions(suggestions)))
+    .catch((err) => dispatch(addError(err.message)))
+    .finally(() => dispatch(cancelFetch()));
 };
 
 export {
@@ -69,4 +81,5 @@ export {
   addError,
   clearError,
   randomGoal,
+  suggestResortNames,
 };
