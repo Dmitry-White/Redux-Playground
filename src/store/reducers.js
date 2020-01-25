@@ -40,4 +40,13 @@ const fetching = (state = false, { type }) => {
   }
 };
 
-export { goal, skiDay, allSKiDays, error, fetching };
+const suggestions = (state = [], { type, payload }) => {
+  switch (type) {
+    case ACTIONS.CLEAR_SUGGESTIONS:
+      return [];
+    default:
+      return state;
+  }
+};
+
+export { goal, skiDay, allSKiDays, error, fetching, suggestions };
