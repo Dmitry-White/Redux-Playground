@@ -12,7 +12,7 @@ const allSKiDays = (state = [], action) => {
       const isSameDay = state.some((day) => day.date === action.payload.date);
       return isSameDay ? state : [...state, skiDay(null, action)];
     case ACTIONS.REMOVE_DAY:
-      return state.filter( (day) => day.date !== action.payload)
+      return state.filter((day) => day.date !== action.payload);
     default:
       return state;
   }
@@ -29,4 +29,13 @@ const error = (state = [], { type, payload }) => {
   }
 };
 
-export { goal, skiDay, allSKiDays, error };
+const fetching = (state = false, { type }) => {
+  switch (type) {
+    case ACTIONS.FETCH_RESORT_NAMES:
+      return true;
+    default:
+      return state;
+  }
+};
+
+export { goal, skiDay, allSKiDays, error, fetching };

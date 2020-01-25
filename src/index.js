@@ -1,5 +1,5 @@
 import ACTIONS from './constants';
-import { goal, skiDay, allSKiDays, error } from './store/reducers';
+import { goal, skiDay, allSKiDays, error, fetching } from './store/reducers';
 
 const setGoalState = 10;
 const skiDayState = null;
@@ -18,6 +18,7 @@ const allSKiDaysState = [
   },
 ];
 const errorState = ['user not authorized', 'server feed not found'];
+const fetchingState = false;
 
 const setGoalAction = {
   type: ACTIONS.SET_GOAL,
@@ -53,6 +54,9 @@ const removeErrorAction = {
   type: ACTIONS.CLEAR_ERROR,
   payload: 0,
 };
+const fetchAction = {
+  type: ACTIONS.FETCH_RESORT_NAMES,
+};
 
 const nextSetGoalState = goal(setGoalState, setGoalAction);
 const nextSkiDayState = skiDay(skiDayState, skiDayAction);
@@ -60,20 +64,23 @@ const addAllSKiDaysState = allSKiDays(allSKiDaysState, addSKiDaysAction);
 const removeAllSKiDaysState = allSKiDays(allSKiDaysState, removeSkiDaysAction);
 const newErrorState = error(errorState, addErrorAction);
 const removedErrorState = error(errorState, removeErrorAction);
+const isFetchingState = fetching(fetchingState, fetchAction);
 
 // eslint-disable-next-line
 console.log(`
-  initial goal: ${skiDayState}
   set goal action: ${JSON.stringify(setGoalAction)}
   ski day action: ${JSON.stringify(skiDayAction)}
   add ski days action: ${JSON.stringify(addSKiDaysAction)}
   remove ski days action: ${JSON.stringify(removeSkiDaysAction)}
   add error action: ${JSON.stringify(addErrorAction)}
   remove error action: ${JSON.stringify(removeErrorAction)}
+  fetching action: ${JSON.stringify(fetchAction)}
+
   new goal: ${nextSetGoalState}
   new day: ${JSON.stringify(nextSkiDayState)}
   add days: ${JSON.stringify(addAllSKiDaysState)}
   remove days: ${JSON.stringify(removeAllSKiDaysState)}
   new error: ${JSON.stringify(newErrorState)}
   removed error: ${JSON.stringify(removedErrorState)}
+  is fetching: ${isFetchingState}
 `);
