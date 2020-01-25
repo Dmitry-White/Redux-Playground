@@ -9,10 +9,10 @@ const skiDay = (state = null, { type, payload }) =>
 const allSKiDays = (state = [], action) => {
   switch (action.type) {
     case ACTIONS.ADD_DAY:
-      const isSameDay = state.some(day => day.date === action.payload.date);
-      return isSameDay
-        ? state
-        : [...state, skiDay(null, action)];
+      const isSameDay = state.some((day) => day.date === action.payload.date);
+      return isSameDay ? state : [...state, skiDay(null, action)];
+    case ACTIONS.REMOVE_DAY:
+      return state.filter( (day) => day.date !== action.payload)
     default:
       return state;
   }

@@ -10,6 +10,12 @@ const allSKiDaysState = [
     powder: true,
     backcountry: false,
   },
+  {
+    resort: 'Mt Tallac',
+    date: '2016-12-9',
+    powder: false,
+    backcountry: true,
+  },
 ];
 const errorState = ['user not authorized', 'server feed not found'];
 
@@ -26,7 +32,7 @@ const skiDayAction = {
     backcountry: false,
   },
 };
-const allSKiDaysAction = {
+const addSKiDaysAction = {
   type: ACTIONS.ADD_DAY,
   payload: {
     resort: 'Squaw Valley',
@@ -34,6 +40,10 @@ const allSKiDaysAction = {
     powder: false,
     backcountry: false,
   },
+};
+const removeSkiDaysAction = {
+  type: ACTIONS.REMOVE_DAY,
+  payload: '2016-12-9',
 };
 const addErrorAction = {
   type: ACTIONS.ADD_ERROR,
@@ -46,7 +56,8 @@ const removeErrorAction = {
 
 const nextSetGoalState = goal(setGoalState, setGoalAction);
 const nextSkiDayState = skiDay(skiDayState, skiDayAction);
-const newAllSKiDaysState = allSKiDays(allSKiDaysState, allSKiDaysAction);
+const addAllSKiDaysState = allSKiDays(allSKiDaysState, addSKiDaysAction);
+const removeAllSKiDaysState = allSKiDays(allSKiDaysState, removeSkiDaysAction);
 const newErrorState = error(errorState, addErrorAction);
 const removedErrorState = error(errorState, removeErrorAction);
 
@@ -55,12 +66,14 @@ console.log(`
   initial goal: ${skiDayState}
   set goal action: ${JSON.stringify(setGoalAction)}
   ski day action: ${JSON.stringify(skiDayAction)}
-  all ski days action: ${JSON.stringify(allSKiDaysAction)}
+  add ski days action: ${JSON.stringify(addSKiDaysAction)}
+  remove ski days action: ${JSON.stringify(removeSkiDaysAction)}
   add error action: ${JSON.stringify(addErrorAction)}
   remove error action: ${JSON.stringify(removeErrorAction)}
   new goal: ${nextSetGoalState}
   new day: ${JSON.stringify(nextSkiDayState)}
-  all days: ${JSON.stringify(newAllSKiDaysState)}
+  add days: ${JSON.stringify(addAllSKiDaysState)}
+  remove days: ${JSON.stringify(removeAllSKiDaysState)}
   new error: ${JSON.stringify(newErrorState)}
   removed error: ${JSON.stringify(removedErrorState)}
 `);
