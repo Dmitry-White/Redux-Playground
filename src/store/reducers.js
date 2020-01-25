@@ -6,6 +6,15 @@ const goal = (state = 10, { type, payload }) =>
 const skiDay = (state = null, { type, payload }) =>
   type === ACTIONS.ADD_DAY ? payload : state;
 
+const allSKiDays = (state = [], action) => {
+  switch (action.type) {
+    case ACTIONS.ADD_DAY:
+      return [...state, skiDay(null, action)];
+    default:
+      return state;
+  }
+};
+
 const error = (state = [], { type, payload }) => {
   switch (type) {
     case ACTIONS.ADD_ERROR:
@@ -17,4 +26,4 @@ const error = (state = [], { type, payload }) => {
   }
 };
 
-export { goal, skiDay, error };
+export { goal, skiDay, allSKiDays, error };
