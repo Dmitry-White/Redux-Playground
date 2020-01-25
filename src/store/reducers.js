@@ -33,6 +33,8 @@ const fetching = (state = false, { type }) => {
   switch (type) {
     case ACTIONS.FETCH_RESORT_NAMES:
       return true;
+    case ACTIONS.CANCEL_FETCHING:
+      return false;
     default:
       return state;
   }

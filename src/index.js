@@ -18,7 +18,8 @@ const allSKiDaysState = [
   },
 ];
 const errorState = ['user not authorized', 'server feed not found'];
-const fetchingState = false;
+const noFetchingState = false;
+const fetchingState = true;
 
 const setGoalAction = {
   type: ACTIONS.SET_GOAL,
@@ -57,6 +58,9 @@ const removeErrorAction = {
 const fetchAction = {
   type: ACTIONS.FETCH_RESORT_NAMES,
 };
+const cancelFetchingAction = {
+  type: ACTIONS.CANCEL_FETCHING,
+};
 
 const nextSetGoalState = goal(setGoalState, setGoalAction);
 const nextSkiDayState = skiDay(skiDayState, skiDayAction);
@@ -64,7 +68,8 @@ const addAllSKiDaysState = allSKiDays(allSKiDaysState, addSKiDaysAction);
 const removeAllSKiDaysState = allSKiDays(allSKiDaysState, removeSkiDaysAction);
 const newErrorState = error(errorState, addErrorAction);
 const removedErrorState = error(errorState, removeErrorAction);
-const isFetchingState = fetching(fetchingState, fetchAction);
+const isFetchingState = fetching(noFetchingState, fetchAction);
+const notFetchingState = fetching(fetchingState, cancelFetchingAction);
 
 // eslint-disable-next-line
 console.log(`
@@ -75,6 +80,7 @@ console.log(`
   add error action: ${JSON.stringify(addErrorAction)}
   remove error action: ${JSON.stringify(removeErrorAction)}
   fetching action: ${JSON.stringify(fetchAction)}
+  cancel fetching action: ${JSON.stringify(cancelFetchingAction)}
 
   new goal: ${nextSetGoalState}
   new day: ${JSON.stringify(nextSkiDayState)}
@@ -83,4 +89,5 @@ console.log(`
   new error: ${JSON.stringify(newErrorState)}
   removed error: ${JSON.stringify(removedErrorState)}
   is fetching: ${isFetchingState}
+  not fetching: ${notFetchingState}
 `);
