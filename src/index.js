@@ -1,17 +1,30 @@
 import ACTIONS from './constants';
-import { goal } from './store/reducers';
+import { goal, skiDay } from './store/reducers';
 
-const state = 10;
+const setGoalState = 10;
+const skiDayState = null;
 
-const action = {
+const setGoalAction = {
   type: ACTIONS.SET_GOAL,
   payload: 15,
 };
+const skiDayAction = {
+  type: ACTIONS.ADD_DAY,
+  payload: {
+    resort: 'Heavanly',
+    data: '2016-12-16',
+    powder: true,
+    backcountry: false,
+  },
+};
 
-const nextState = goal(state, action);
+const nextSetGoalState = goal(setGoalState, setGoalAction);
+const nextSkiDayState = skiDay(skiDayState, skiDayAction);
 
 console.log(`
-  initial goal: ${state}
-  action: ${JSON.stringify(action)}
-  new goal: ${nextState}
+  initial goal: ${skiDayState}
+  set goal action: ${JSON.stringify(setGoalAction)}
+  ski day action: ${JSON.stringify(skiDayAction)}
+  new goal: ${nextSetGoalState}
+  new day: ${JSON.stringify(nextSkiDayState)}
 `);
