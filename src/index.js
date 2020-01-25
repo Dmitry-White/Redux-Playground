@@ -28,6 +28,10 @@ const errorState = ['user not authorized', 'server feed not found'];
 const noFetchingState = false;
 const fetchingState = true;
 const suggestionsState = ['Squaw Valley', 'Snowbird', 'Stowe', 'Steamboat'];
+const emptySuggestionsState = {
+  fetching: true,
+  suggestions: [],
+};
 
 const setGoalAction = {
   type: ACTIONS.SET_GOAL,
@@ -36,7 +40,7 @@ const setGoalAction = {
 const skiDayAction = {
   type: ACTIONS.ADD_DAY,
   payload: {
-    resort: 'Heavanly',
+    resort: 'Heavenly',
     date: '2016-12-7',
     powder: true,
     backcountry: false,
@@ -72,6 +76,10 @@ const cancelFetchingAction = {
 const clearSuggestionsAction = {
   type: ACTIONS.CLEAR_SUGGESTIONS,
 };
+const changedSuggestionsAction = {
+  type: ACTIONS.CHANGE_SUGGESTIONS,
+  payload: ['Heavenly Ski Resort', 'Heavens Sonohara'],
+};
 
 const nextSetGoalState = goal(setGoalState, setGoalAction);
 const nextSkiDayState = skiDay(skiDayState, skiDayAction);
@@ -85,6 +93,10 @@ const clearedSuggestionsState = suggestions(
   suggestionsState,
   clearSuggestionsAction,
 );
+const changedSuggestionsState = {
+  fetching: fetching(fetchingState, changedSuggestionsAction),
+  suggestions: suggestions(emptySuggestionsState, changedSuggestionsAction),
+};
 
 // eslint-disable-next-line
 console.log(`
@@ -97,6 +109,7 @@ console.log(`
   fetching action: ${JSON.stringify(fetchAction)}
   cancel fetching action: ${JSON.stringify(cancelFetchingAction)}
   clear suggestions action: ${JSON.stringify(clearSuggestionsAction)}
+  change suggestions action: ${JSON.stringify(changedSuggestionsAction)}
 
   new goal: ${nextSetGoalState}
   new day: ${JSON.stringify(nextSkiDayState)}
@@ -107,4 +120,5 @@ console.log(`
   is fetching: ${isFetchingState}
   not fetching: ${notFetchingState}
   cleared suggestions: ${JSON.stringify(clearedSuggestionsState)}
+  changed suggestions: ${JSON.stringify(changedSuggestionsState)}
 `);

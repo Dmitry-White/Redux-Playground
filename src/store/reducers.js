@@ -35,6 +35,8 @@ const fetching = (state = false, { type }) => {
       return true;
     case ACTIONS.CANCEL_FETCHING:
       return false;
+    case ACTIONS.CHANGE_SUGGESTIONS:
+      return false;
     default:
       return state;
   }
@@ -44,6 +46,8 @@ const suggestions = (state = [], { type, payload }) => {
   switch (type) {
     case ACTIONS.CLEAR_SUGGESTIONS:
       return [];
+    case ACTIONS.CHANGE_SUGGESTIONS:
+      return payload;
     default:
       return state;
   }
