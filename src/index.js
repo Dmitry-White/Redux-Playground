@@ -6,7 +6,7 @@ const skiDayState = null;
 const allSKiDaysState = [
   {
     resort: 'Kirkwood',
-    data: '2016-12-7',
+    date: '2016-12-16',
     powder: true,
     backcountry: false,
   },
@@ -21,7 +21,7 @@ const skiDayAction = {
   type: ACTIONS.ADD_DAY,
   payload: {
     resort: 'Heavanly',
-    data: '2016-12-16',
+    date: '2016-12-7',
     powder: true,
     backcountry: false,
   },
@@ -30,7 +30,7 @@ const allSKiDaysAction = {
   type: ACTIONS.ADD_DAY,
   payload: {
     resort: 'Squaw Valley',
-    data: '2016-12-8',
+    date: '2016-12-14',
     powder: false,
     backcountry: false,
   },

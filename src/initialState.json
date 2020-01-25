@@ -2,19 +2,19 @@
   "allSkiDays": [
     {
       "resort": "Kirkwood",
-      "data": "2016-12-7",
+      "date": "2016-12-7",
       "powder": true,
       "backcountry": false
     },
     {
       "resort": "Squaw Valley",
-      "data": "2016-12-8",
+      "date": "2016-12-8",
       "powder": false,
       "backcountry": false
     },
     {
       "resort": "Mt Tallac",
-      "data": "2016-12-9",
+      "date": "2016-12-9",
       "powder": false,
       "backcountry": true
     }
