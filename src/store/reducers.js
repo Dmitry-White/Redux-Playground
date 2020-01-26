@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 import ACTIONS from '../constants';
 
 const goal = (state = 10, { type, payload }) =>
@@ -6,7 +8,7 @@ const goal = (state = 10, { type, payload }) =>
 const skiDay = (state = null, { type, payload }) =>
   type === ACTIONS.ADD_DAY ? payload : state;
 
-const allSKiDays = (state = [], action) => {
+const allSkiDays = (state = [], action) => {
   switch (action.type) {
     case ACTIONS.ADD_DAY:
       const isSameDay = state.some((day) => day.date === action.payload.date);
@@ -18,7 +20,7 @@ const allSKiDays = (state = [], action) => {
   }
 };
 
-const error = (state = [], { type, payload }) => {
+const errors = (state = [], { type, payload }) => {
   switch (type) {
     case ACTIONS.ADD_ERROR:
       return [...state, payload];
@@ -53,4 +55,17 @@ const suggestions = (state = [], { type, payload }) => {
   }
 };
 
-export { goal, skiDay, allSKiDays, error, fetching, suggestions };
+const resortNames = combineReducers({
+  fetching,
+  suggestions,
+});
+
+const rootReducer = combineReducers({
+  allSkiDays,
+  goal,
+  errors,
+  resortNames,
+});
+
+export { goal, skiDay, allSkiDays, errors, fetching, suggestions };
+export default rootReducer;
